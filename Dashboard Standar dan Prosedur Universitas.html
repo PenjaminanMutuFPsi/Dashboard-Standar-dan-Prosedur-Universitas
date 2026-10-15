@@ -47,6 +47,16 @@ li.ed{flex-wrap:wrap}.ed input{padding:5px 8px;font-size:13px}
 .add{margin-top:8px;font-size:13px;color:var(--ac)}
 .hd{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.hd input{flex:1 1 160px}
 .empty{color:var(--mu);padding:30px;text-align:center}
+.w{--tc:#1f5fbf}
+.tabs button.on{background:var(--tc);border-color:var(--tc);color:#fff}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid rgba(255,255,255,.7)}
+details{border-top:4px solid var(--tc)}
+a.go{background:color-mix(in srgb,var(--tc) 15%,transparent);color:color-mix(in srgb,var(--tc) 75%,var(--tx))}
+.st{border-left:4px solid var(--tc)}
+.pr i{background:var(--tc)}
+li.g{color:color-mix(in srgb,var(--tc) 75%,var(--tx))}
+.cl{display:flex;align-items:center;gap:6px;color:var(--mu);font-size:13px}
+.cl input{width:38px;height:32px;padding:0;border:1px solid var(--bd);border-radius:6px;background:var(--card);cursor:pointer}
 dialog{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:12px;width:min(640px,92vw)}
 dialog textarea{width:100%;height:260px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;font:12px monospace}
 </style>
@@ -57,6 +67,7 @@ dialog textarea{width:100%;height:260px;background:var(--bg);border:1px solid va
 <p class="sub">Cari standar atau prosedur, lalu klik <b>Buka</b> untuk menuju dokumennya.</p>
 <div class="bar">
 <input type="search" id="q" placeholder="Cari bidang, standar, atau prosedur…">
+<label class="cl">Warna tab<input type="color" id="tc"></label>
 <button id="be">✎ Mode Edit</button>
 <button id="bk">Backup / Restore</button>
 </div>
@@ -85,7 +96,7 @@ G("4. Strategi Penanganan Ketidaktercapaian Standar",...K3.map((k,i)=>"4."+(i+1)
 G("5. Pihak Terkait",...K3.map((k,i)=>"5."+(i+1)+" Pihak Terkait Standar "+k+" "+x)),"6. Dokumen Terkait","7. Referensi"]);
 const L=(n,s)=>B(n,[R1,G(I2,...DI(s)),TL]);
 const seed=()=>[
-{id:"na",name:"Standar Non Akademik",b:[
+{id:"na",c:"#1f5fbf",name:"Standar Non Akademik",b:[
 B("A. STANDAR KEMAHASISWAAN & ALUMNI",[R1,G(I2,...DI("2.1 Standar Kemahasiswaan","Pernyataan Standar dan Indikator"),...DI("2.2 Standar Alumni","Pernyataan Standar dan Indikator")),TL]),
 B("B. STANDAR PEMERINGKATAN",[R1,G(I2,...DI("2.1 Standar Pemeringkatan UNTAR")),TL]),
 B("C. STANDAR KERJASAMA & HUBUNGAN INTERNASIONAL",[R1,G(I2,...DI("2.1.1 Standar Pembuatan Kerja Sama"),...DI("2.1.2 Standar Pelaksanaan Kerja Sama"),...DI("2.1.3 Standar Evaluasi dan Tindak Lanjut Kerja Sama"),...DI("2.2.1 Standar Perencanaan Pertukaran Mahasiswa"),...DI("2.2.2 Standar Pelaksanaan Pertukaran Mahasiswa"),...DI("2.2.3 Standar Evaluasi dan Tindak Lanjut Pertukaran Mahasiswa")),TL]),
@@ -98,13 +109,13 @@ TL.slice(1)]),
 L("H. STANDAR KOLEKSI PERPUSTAKAAN","Standar Koleksi Perpustakaan"),
 L("I. STANDAR PELAYANAN (PERPUSTAKAAN)","Standar Pelayanan Perpustakaan"),
 L("J. STANDAR PROTOKOL & HUBUNGAN KELEMBAGAAN","Standar Protokol & Hubungan Kelembagaan")]},
-{id:"ak",name:"Standar Akademik",b:[
+{id:"ak",c:"#16794a",name:"Standar Akademik",b:[
 B("PENDIDIKAN",[R1,G(I2,...DI("2.1 Standar Luaran Pendidikan","Pernyataan Standar dan Indikator"),"2.2.1 Standar Proses Pembelajaran","2.2.2 Standar Penilaian Pembelajaran","2.3.1 Standar Isi Pendidikan","2.3.2 Standar Dosen dan Tenaga Kependidikan","2.3.3 Standar Sarana dan Prasarana Pendidikan","2.3.4 Standar Pembiayaan Pendidikan"),
 G("3. Strategi Pencapaian Standar","3.1 Luaran Pendidikan","3.2.1 Standar Proses Pembelajaran","3.2.2 Standar Penilaian","3.2.3 Standar Pengelolaan","3.3.1 Standar Isi Pendidikan","3.3.2 Standar Dosen dan Tenaga Kependidikan","3.3.3 Standar Sarana & Prasarana Pendidikan","3.3.4 Standar Pembiayaan Pendidikan"),
 G("4. Strategi Penanganan Ketidaktercapaian Standar","4.1 Luaran Pendidikan","4.2.1 Standar Proses Pembelajaran","4.2.2 Standar Penilaian","4.2.3 Standar Pengelolaan","4.3.1 Standar Isi Pendidikan","4.3.2 Standar Dosen dan Tenaga Kependidikan","4.3.3 Standar Sarana dan Prasarana Pendidikan","4.3.4 Standar Pembiayaan Pendidikan"),
 "5. Pihak Terkait","6. Dokumen Terkait","7. Referensi"]),
 RS("PENELITIAN"),RS("PkM")]},
-{id:"pr",name:"Prosedur & Manual",b:[
+{id:"pr",c:"#c2571a",name:"Prosedur & Manual",b:[
 B("PENDIDIKAN",[G("A.1 Kompetensi Lulusan","A.1.1 Prosedur Kompetensi Lulusan"),
 N("A.2.1 Prosedur Proses Pembelajaran","A.2.1.","Prosedur Alur Registrasi Mahasiswa Baru","Prosedur Permintaan Kode Mata Kuliah","Prosedur Permintaan Kode Mata Kuliah","Prosedur Proses Pembelajaran","Prosedur Registrasi Rencana Studi (RRS)"),
 N("A.2.2 Prosedur Penilaian","A.2.2.","Prosedur Penilaian Pembelajaran","Prosedur Cuti Akademik"),
@@ -127,9 +138,11 @@ if(!Array.isArray(S)||!S.length)S=seed();
 tab=S[0].id;
 function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 const cur=()=>S.find(t=>t.id===tab)||S[0];
+const tcol=x=>/^#[0-9a-f]{6}$/i.test(x.c||"")?x.c:({na:"#1f5fbf",ak:"#16794a",pr:"#c2571a"}[x.id]||"#1f5fbf");
 function render(){
  const t=cur(),ql=q.trim().toLowerCase();
- $("#tabs").innerHTML=S.map(x=>`<button class="${x.id===tab?"on":""}" data-a="tab" data-id="${esc(x.id)}">${esc(x.name)}</button>`).join("");
+ $(".w").style.setProperty("--tc",tcol(t));$("#tc").value=tcol(t);
+ $("#tabs").innerHTML=S.map(x=>`<button class="${x.id===tab?"on":""}" style="--tc:${tcol(x)}" data-a="tab" data-id="${esc(x.id)}"><i class="dot" style="background:${tcol(x)}"></i>${esc(x.name)}</button>`).join("");
  let tot=0,lk=0;t.b.forEach(b=>b.items.forEach(i=>{tot++;if(ok(i.u))lk++}));
  const pc=tot?Math.round(lk/tot*100):0;
  $("#stats").innerHTML=`<div class="st"><b>${t.b.length}</b><span>Bidang</span></div><div class="st"><b>${tot}</b><span>Item dokumen</span></div><div class="st"><b>${lk}</b><span>Sudah ada link (${pc}%)</span><div class="pr"><i style="width:${pc}%"></i></div></div>`;
@@ -175,6 +188,7 @@ document.addEventListener("change",e=>{
 document.addEventListener("toggle",e=>{const k=e.target.dataset&&e.target.dataset.k;if(k){e.target.open?open.add(k):open.delete(k)}},true);
 $("#q").addEventListener("input",e=>{q=e.target.value;render()});
 $("#be").onclick=()=>{edit=!edit;render()};
+$("#tc").addEventListener("input",e=>{cur().c=e.target.value;save();render()});
 $("#ab").onclick=()=>{cur().b.push({n:"BIDANG BARU",u:"",items:[{g:"",t:"Item baru",u:""}]});open.add(tab+(cur().b.length-1));save();render()};
 $("#bk").onclick=()=>{$("#ta").value=JSON.stringify(S);$("#dlg").showModal()};
 $("#cl").onclick=()=>$("#dlg").close();
